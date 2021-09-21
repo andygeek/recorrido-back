@@ -12,4 +12,4 @@
 
 ## 3. Diagrama de base de datos
 
-<img src="https://imgur.com/O4bRssL.png" width="500"/>
+<img src="https://imgur.com/6A7lIlv.png" width="500"/>
