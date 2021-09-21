@@ -9,3 +9,7 @@
 ## 2. Page flow
 
 <img src="https://imgur.com/LmsO7by.png" width="600"/>
+
+## 3. Diagrama de base de datos
+
+<img src="https://imgur.com/O4bRssL.png" width="500"/>
