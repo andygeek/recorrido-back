@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/faker-ruby/faker.git
+  revision: 96d0eea6b4eaad897f8803be1be9708a155d5975
+  branch: master
+  specs:
+    faker (2.19.0)
+      i18n (>= 1.6, < 2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -172,6 +180,7 @@ DEPENDENCIES
   byebug
   database_cleaner-active_record
   factory_bot_rails
+  faker!
   puma (~> 5.0)
   rails (~> 6.1.4, >= 6.1.4.1)
   rspec-rails (~> 5.0.0)
