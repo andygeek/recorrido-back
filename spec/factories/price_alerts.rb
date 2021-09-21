@@ -5,6 +5,6 @@ FactoryBot.define do
     destiny_id { 1 }
     class_id { 1 }
     price { "9.99" }
-    user { nil }
+    user
   end
 end
