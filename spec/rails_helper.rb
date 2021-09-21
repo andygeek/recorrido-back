@@ -73,6 +73,9 @@ RSpec.configure do |config|
       example.run
     end
   end
+
+  # FactoryBot configuration
+  config.include FactoryBot::Syntax::Methods
 end
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
