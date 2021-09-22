@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   # Search for price alerts by user id
   get "/price_alerts/find_by_userid/:id" => "price_alerts#find_by_userid"
 
-  # Search for price alerts by user id
   post "/users/signup" => "users#signup"
+
+  post "/users/login" => "users#login"
 end
