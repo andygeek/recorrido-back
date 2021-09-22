@@ -1,5 +1,6 @@
 class PriceAlert < ApplicationRecord
   belongs_to :user
+  has_many :min_prices
   
   validates :name, presence: true
   validates :origin_id, presence: true

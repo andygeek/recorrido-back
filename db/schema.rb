@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_21_042218) do
+ActiveRecord::Schema.define(version: 2021_09_22_204823) do
+
+  create_table "min_prices", force: :cascade do |t|
+    t.date "date_fetch"
+    t.time "hour"
+    t.integer "class_id"
+    t.decimal "min_price"
+    t.string "buss_operator_name"
+    t.integer "price_alert_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["price_alert_id"], name: "index_min_prices_on_price_alert_id"
+  end
 
   create_table "price_alerts", force: :cascade do |t|
     t.string "name"
@@ -32,5 +44,6 @@ ActiveRecord::Schema.define(version: 2021_09_21_042218) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "min_prices", "price_alerts"
   add_foreign_key "price_alerts", "users"
 end
