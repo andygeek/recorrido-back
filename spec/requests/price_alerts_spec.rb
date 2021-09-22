@@ -15,7 +15,6 @@ RSpec.describe "Price_alerts", type: :request do
     end
   end
 
-
   describe "GET /price_alerts/find_by_userid/{id}" do
     
     context "when there is no alert created" do
@@ -46,5 +45,25 @@ RSpec.describe "Price_alerts", type: :request do
       end
     end
   end
-  
+
+  describe "POST /price_alerts" do
+    
+    context "when sending parameters" do
+      let!(:user) { create(:user) }
+      let!(:create_params) { { "price_alert" => { 
+        "name" => Faker::Name.first_name,
+        "origin_id" => 1,
+        "destiny_id" => 1,
+        "class_id" => 1,
+        "price" => 10.50,
+        "user_id" => user.id } } }
+
+      it "should create a user" do
+        post "/price_alerts", params: create_params
+        payload = JSON.parse(response.body)
+        expect(payload).to_not be_empty
+        expect(response).to have_http_status(:ok)
+      end
+    end
+  end
 end

@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   post "/users/signup" => "users#signup"
 
   post "/users/login" => "users#login"
+
+  post "/price_alerts" => "price_alerts#create"
 end
