@@ -13,8 +13,7 @@ WORKDIR /app
 
 COPY Gemfile* /app/
 
-RUN gem install bundler && bundle install && \
-    bundle config set path 'vendor/cache'
+RUN gem install bundler && bundle install
     
 COPY . /app
 
