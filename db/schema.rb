@@ -13,6 +13,7 @@
 ActiveRecord::Schema.define(version: 2021_09_22_204823) do
 
   create_table "min_prices", force: :cascade do |t|
+    t.integer "search_result_id"
     t.date "date_fetch"
     t.time "hour"
     t.integer "class_id"

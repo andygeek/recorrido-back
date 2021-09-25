@@ -1,6 +1,7 @@
 class CreateMinPrices < ActiveRecord::Migration[6.1]
   def change
     create_table :min_prices do |t|
+      t.integer :search_result_id
       t.date :date_fetch
       t.time :hour
       t.integer :class_id
