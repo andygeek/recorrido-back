@@ -7,7 +7,7 @@ class ApplicationController < ActionController::API
 
   def authenticate!
     # Get header of Authorization
-    header = request.header["Authorization"]
+    header = request.headers["Authorization"]
     
     # Authorization = bearer xxxx, we will use only xxx
     header = header.split(' ').last if header
