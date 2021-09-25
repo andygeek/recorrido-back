@@ -43,7 +43,7 @@ class UsersController < ApplicationController
       # Encode the user_id in the token
       token = JsonWebToken.encode({user_id: @user.id}, time)
       
-      render json: { token: token, exp: time.strftime( "%d-%m-%Y %H:%M"), email: @user.email }
+      render json: { token: token, exp: time.strftime( "%d-%m-%Y %H:%M"), email: @user.email, name: @user.name }
     else
       render json: { error: "unauthorized" }, status: :forbidden    
     end

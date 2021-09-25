@@ -57,5 +57,38 @@ RSpec.describe "Users", type: :request do
         expect(response).to have_http_status(:bad_request)
       end
     end
+    context "when user no existe in db" do
+      let!(:create_params) { { "user" => { "name" => Faker::Name.first_name, "email" => "#{Faker::Name.first_name}@gmail.com", "password" => "abc123abc123" } } }
+
+      it "should return 'User already exists'" do
+        post "/users/signup", params: create_params
+        payload = JSON.parse(response.body)
+        expect(payload).to include("token", "email", "name")
+        expect(response).to have_http_status(:ok)
+      end
+    end
+  end
+
+  describe "POST /login" do
+    context "when you no send params" do
+      
+      it "should return params missin error" do
+        post "/users/login"
+        payload = JSON.parse(response.body)
+        expect(payload["error"]).to eq("No parameters found")
+        expect(response).to have_http_status(:bad_request)
+      end
+    end
+    context "when user exist in db" do
+      let!(:user) { create(:user) }
+      let!(:login_params) { { "user" => { "email" => user.email, "password" => user.password } } }
+      
+      it "should return user info" do
+        post "/users/login", params: login_params
+        payload = JSON.parse(response.body)
+        expect(payload).to include("token", "email", "name")
+        expect(response).to have_http_status(:ok)
+      end
+    end
   end
 end
