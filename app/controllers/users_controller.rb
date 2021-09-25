@@ -3,6 +3,10 @@ class UsersController < ApplicationController
   # Signup does not require authentication
   skip_before_action :authenticate!, only: [:signup, :login]
 
+  rescue_from ActionController::ParameterMissing do |e|
+    render json: {error: "No parameters found"}, status: :bad_request
+  end
+
   # GET /users
   def index
     users = User.all
@@ -11,13 +15,18 @@ class UsersController < ApplicationController
 
   # POST /users/singup
   def signup
-    user = User.new(signup_params)
-    if user.save
-      time = Time.now + 24.hours.to_i
-      token = JsonWebToken.encode({user_id: user.id}, time)
-      render json: { token: token, exp: time.strftime( "%d-%m-%Y %H:%M"), name:user.name, email: user.email }
+    @user = User.find_by(email: signup_params[:email])
+    if @user
+      render json: { error: "User already exists" }, status: :bad_request    
     else
-      render json: { status: :bad, error: user.errors.message }
+      new_user = User.new(signup_params)
+      if new_user.save
+        time = Time.now + 24.hours.to_i
+        token = JsonWebToken.encode({user_id: new_user.id}, time)
+        render json: { token: token, exp: time.strftime( "%d-%m-%Y %H:%M"), name:new_user.name, email: new_user.email }, status: :ok
+      else
+        render json: { error: new_user.errors.message }, status: :bad_request 
+      end
     end
   end
 
