@@ -2,7 +2,9 @@ class JsonWebToken
 
   # Generate a secret
   SECRET_KEY = ENV["JWT_SECRET"]
+
   
+  # Encode
   def self.encode(payload, exp = 24.hours.from_now)
 
     payload[:exp] = exp.to_i
@@ -14,6 +16,7 @@ class JsonWebToken
     decoded = JWT.decode(token, SECRET_KEY).first
 
     HashWithIndifferentAccess.new decoded
+
   end
 
 end

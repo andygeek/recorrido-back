@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   # Signup does not require authentication
-  skip_before_action :authenticate!, only: [:signup]
+  skip_before_action :authenticate!, only: [:signup, :login]
 
   # GET /users
   def index
@@ -13,7 +13,9 @@ class UsersController < ApplicationController
   def signup
     user = User.new(signup_params)
     if user.save
-      render json: user.as_json(json_options)
+      time = Time.now + 24.hours.to_i
+      token = JsonWebToken.encode({user_id: user.id}, time)
+      render json: { token: token, exp: time.strftime( "%d-%m-%Y %H:%M"), name:user.name, email: user.email }
     else
       render json: { status: :bad, error: user.errors.message }
     end
@@ -32,7 +34,7 @@ class UsersController < ApplicationController
       # Encode the user_id in the token
       token = JsonWebToken.encode({user_id: @user.id}, time)
       
-      render json: { toke: token, exp: time.strftime( "%d-%m-%Y %H:%M"), email: @user.email }
+      render json: { token: token, exp: time.strftime( "%d-%m-%Y %H:%M"), email: @user.email }
     else
       render json: { error: "unauthorized" }, status: :forbidden    
     end

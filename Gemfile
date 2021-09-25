@@ -19,6 +19,8 @@ gem 'faraday'
 gem 'faraday_middleware'
 gem 'bcrypt'
 gem 'jwt'
+gem 'dotenv-rails'
+
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
