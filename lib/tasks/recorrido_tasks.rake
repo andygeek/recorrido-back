@@ -15,8 +15,8 @@ namespace :recorrido_tasks do
 
       body = { 
         bus_travel: {
-          departure_city_id: x.origin_id,
-          destination_city_id: x.destiny_id,
+          departure_city_id: x.origin_id, #9333
+          destination_city_id: x.destiny_id, #9360
           departure_date: '01-01-2050' #Time.now.strftime("%d-%m-%Y)
         }
       }
@@ -36,10 +36,16 @@ namespace :recorrido_tasks do
         # Result with minimum price
         min_result = arr_result_search.min_by {|x| x['price']}
 
-        Rails.logger.info "response -------- #{min_result}"
+        # Search the database for matches
+        @exist_min_price = MinPrice.where(:search_result_id => min_result['id'], :price_alert_id => x[:id]).first
 
-        # TO-DO
-        # Add to the database
+        if !@exist_min_price.present?
+          # Add to the database
+          MinPrice.create(search_result_id: min_result['id'], date_fetch:'01-01-2050', hour: '1970-01-01 10:58:13 UTC', class_id: 1, min_price: 10, buss_operator_name: 'mi bus', price_alert_id: x[:id])
+        else
+          Rails.logger.info "Ya existe en la base de datos"
+        end
+
       end
     end
   end
