@@ -42,3 +42,25 @@ Por mi poca experiencia trabajando con Docker y ruby tube un problema al dockeri
 
 Lo siguiente es ejecutar whenever para poder subir nuestras tareas periodicas a cron. Para esto usamos el comando `whenever -w`. Con esto ya tenemos un cron revisando periodiamente el aPI para encontrar nuevos precios de buses. 
 
+
+
+## 4. Pruebas con Postman
+
+Para enviar los datos del usuario para el las rutas de login y signup, estos deben tener la siguiente forma.
+
+```json
+{
+    "user": {
+        "name": "nuevo",
+        "email": "nuevo@gmail.com",
+        "password": "nuevo@gmail.com"
+    }
+}
+
+{
+    "user": {
+        "email": "nuevo@gmail.com",
+        "password": "nuevo@gmail.com"
+    }
+}
+```
