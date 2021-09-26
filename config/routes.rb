@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   get "/users" => "users#index"
 
+  get "/users/dashboard" => "users#dashboard"
+
   # Search for price alerts by user id
   get "/price_alerts/find_by_userid/:id" => "price_alerts#find_by_userid"
 

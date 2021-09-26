@@ -10,7 +10,13 @@ class UsersController < ApplicationController
   # GET /users
   def index
     users = User.all
-    render json: users.as_json(json_options)
+    render json: users.as_json(json_options), status: :ok
+  end
+
+  # GET /users/dashboard
+  def dashboard
+    @user = @current_user
+    render json: @user.as_json(json_options), status: :ok 
   end
 
   # POST /users/singup
