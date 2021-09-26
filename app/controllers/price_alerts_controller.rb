@@ -1,5 +1,8 @@
 class PriceAlertsController < ApplicationController 
   
+  rescue_from ActiveRecord::RecordNotFound do |e|
+    render json: {error: "Record not found"}, status: :bad_request
+  end
 
   # GET /price_alerts
   def index
@@ -9,8 +12,11 @@ class PriceAlertsController < ApplicationController
 
   # GET /price_alerts/find_by_userid/:id
   def find_by_userid
-    @price_alerts = PriceAlert.where(:user_id => params[:id]).all
-    render json: @price_alerts, status: :ok
+    @user = User.find(params[:id])
+    if @user
+      @price_alerts = PriceAlert.where(:user_id => params[:id]).all
+      render json: @price_alerts, status: :ok
+    end
   end
 
   # POST /price_alerts
