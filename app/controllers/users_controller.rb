@@ -29,7 +29,7 @@ class UsersController < ApplicationController
       if new_user.save
         time = Time.now + 24.hours.to_i
         token = JsonWebToken.encode({user_id: new_user.id}, time)
-        render json: { token: token, exp: time.strftime( "%d-%m-%Y %H:%M"), name:new_user.name, email: new_user.email }, status: :ok
+        render json: { token: token, exp: time.strftime( "%d-%m-%Y %H:%M"), name:new_user.name, email: new_user.email, id: new_user.id }, status: :ok
       else
         render json: { error: new_user.errors.message }, status: :bad_request 
       end
@@ -49,7 +49,7 @@ class UsersController < ApplicationController
       # Encode the user_id in the token
       token = JsonWebToken.encode({user_id: @user.id}, time)
       
-      render json: { token: token, exp: time.strftime( "%d-%m-%Y %H:%M"), email: @user.email, name: @user.name }
+      render json: { token: token, exp: time.strftime( "%d-%m-%Y %H:%M"), email: @user.email, name: @user.name, id: @user.id }
     else
       render json: { error: "unauthorized" }, status: :forbidden    
     end
