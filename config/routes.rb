@@ -18,4 +18,6 @@ Rails.application.routes.draw do
   get "/cities" => "cities#index"
 
   get "/min_prices/:id" => "min_prices#find_by_id"
+
+  post "/external_web" => "external_webs#index"
 end
