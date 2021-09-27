@@ -25,6 +25,13 @@ class PriceAlertsController < ApplicationController
     render json: @price_alert, status: :ok
   end
 
+  # PUT /price_alerts/:id
+  def update
+    @current_price_alert = PriceAlert.find(params[:id])
+    @current_price_alert.update!(update_params)
+    render json: @post, status: :ok
+  end
+
   # DELETE /price_alerts/:id
   def destroy
     @price_alert = PriceAlert.find(params[:id])
@@ -35,6 +42,10 @@ class PriceAlertsController < ApplicationController
   private
   
   def create_params
+    params.require(:price_alert).permit(:name, :origin_id, :origin_name, :origin_url_name, :destiny_id, :destiny_name, :destiny_url_name, :class_id, :class_name, :price, :user_id)
+  end
+
+  def update_params
     params.require(:price_alert).permit(:name, :origin_id, :origin_name, :origin_url_name, :destiny_id, :destiny_name, :destiny_url_name, :class_id, :class_name, :price, :user_id)
   end
 

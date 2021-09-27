@@ -20,4 +20,6 @@ Rails.application.routes.draw do
   get "/min_prices/:id" => "min_prices#find_by_id"
 
   post "/external_web" => "external_webs#index"
+
+  put "/price_alerts/:id" => "price_alerts#update"
 end
