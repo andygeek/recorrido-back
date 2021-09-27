@@ -32,7 +32,7 @@ Por último para ejecutar el cron que enviará solicitudes al API de Recorrido.c
 
 ```
 apt-get install cron
-...
+```
 
 ### Inicializando el proyecto
 
@@ -41,34 +41,17 @@ Luego de descargar el repositorio debes instalar sus dependencias usando el sigu
 ```
 bundle install
 ```
+Para ejecutar el servidor utilizamos el comando.
 
-.
-.
-.
-
-Por mi poca experiencia trabajando con Docker y ruby tube un problema al dockerizar el administrador de tareas (schedule) usando Docker. Asi que solo tenemos que hacerlo manualmente. Primero necesitamos intalar nuestra aplicación usando `bundle install`. Esto instalará todas las dependenicas, se recomienda utilizar ... para ejecutar la version 3 de ruby sin alterar la version que utilices para trabajar. Luego de esto necesitamos tener instalado cron, puedes usar `apt get install cron` en linux, aunque en ubuntu 20.0 ya viene instalado, asi que solo necesitaremos verificar que funciona usando `service cron status`. 
-
-Lo siguiente es ejecutar whenever para poder subir nuestras tareas periodicas a cron. Para esto usamos el comando `whenever -w`. Con esto ya tenemos un cron revisando periodiamente el aPI para encontrar nuevos precios de buses. 
-
-
-
-## 4. Pruebas con Postman
-
-Para enviar los datos del usuario para el las rutas de login y signup, estos deben tener la siguiente forma.
-
-```json
-{
-    "user": {
-        "name": "nuevo",
-        "email": "nuevo@gmail.com",
-        "password": "nuevo@gmail.com"
-    }
-}
-
-{
-    "user": {
-        "email": "nuevo@gmail.com",
-        "password": "nuevo@gmail.com"
-    }
-}
 ```
+rails server
+```
+
+Esto nos abrirá un puerto en el localhost para utilizar nuestro API.
+
+### Ejecutando el cron
+
+Para crear el cron debemos primero verificar que este se ejecuta en nuestra computadora. Para esto usamos `service cron status`, si el resultado es satisfactorio podemos usar el comando `whenever -w` y esto escribirá dentro de nuestro cron nuestra tarea a ejecutar que ya esta escrita en `/lib/tasks/recorrido_tasks.rake` permitiendo que dicha tarea se ejecute cada 5 minutos.
+
+Si ocurriera algúnn error podemos verificarlos en el archivo `/log/cron_error_log`.
+
