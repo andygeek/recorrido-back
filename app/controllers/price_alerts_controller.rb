@@ -25,6 +25,13 @@ class PriceAlertsController < ApplicationController
     render json: @price_alert, status: :ok
   end
 
+  # DELETE /price_alerts/:id
+  def destroy
+    @price_alert = PriceAlert.find(params[:id])
+    @price_alert.destroy
+    render json: {action: "Record deleted"}, status: :ok
+  end
+
   private
   
   def create_params
