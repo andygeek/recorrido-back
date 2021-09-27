@@ -41,11 +41,13 @@ namespace :recorrido_tasks do
 
         if !@exist_min_price.present?
           # Add to the database
-          MinPrice.create(search_result_id: min_result['id'], date_fetch:'01-01-2050', hour: '1970-01-01 10:58:13 UTC', class_id: 1, min_price: 10, buss_operator_name: 'mi bus', price_alert_id: x[:id])
+          MinPrice.create(search_result_id: min_result['id'], date_departure:'01-01-2050', hour: '1970-01-01 10:58:13 UTC', class_id: 1, min_price: 10, buss_operator_name: 'mi bus', price_alert_id: x[:id])
         else
           Rails.logger.info "Ya existe en la base de datos"
         end
 
+      else
+        Rails.logger.info "No se devolvio un complete"
       end
     end
   end
