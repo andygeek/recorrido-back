@@ -50,6 +50,13 @@ rails server
 
 Esto nos abrirá un puerto en el localhost para utilizar nuestro API.
 
+#### :warning: Importante
+
+Si tenemos problemas con CORS para conectar este API con nuestro front solo debemos agregar el url(localhost) de nuestro front dentro del archivo `config/initializers/cors.rb`.
+```
+origins 'localhost:3005'
+```
+
 ### Ejecutando el cron
 
 Para crear el cron debemos primero verificar que este se ejecuta en nuestra computadora. Para esto usamos `service cron status`, si el resultado es satisfactorio podemos usar el comando `whenever -w` y esto escribirá dentro de nuestro cron nuestra tarea a ejecutar que ya esta escrita en `/lib/tasks/recorrido_tasks.rake` permitiendo que dicha tarea se ejecute cada 5 minutos.
