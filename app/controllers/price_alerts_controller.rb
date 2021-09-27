@@ -28,7 +28,7 @@ class PriceAlertsController < ApplicationController
   private
   
   def create_params
-    params.require(:price_alert).permit(:name, :origin_id, :origin_name, :origin_url_name, :destiny_id, :destiny_name, :destiny_url_name, :class_id, :price, :user_id)
+    params.require(:price_alert).permit(:name, :origin_id, :origin_name, :origin_url_name, :destiny_id, :destiny_name, :destiny_url_name, :class_id, :class_name, :price, :user_id)
   end
 
 end

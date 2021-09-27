@@ -14,9 +14,10 @@ ActiveRecord::Schema.define(version: 2021_09_22_204823) do
 
   create_table "min_prices", force: :cascade do |t|
     t.integer "search_result_id"
-    t.date "date_fetch"
+    t.date "date_departure"
     t.time "hour"
     t.integer "class_id"
+    t.string "class_name"
     t.decimal "min_price"
     t.string "buss_operator_name"
     t.integer "price_alert_id", null: false
@@ -34,6 +35,7 @@ ActiveRecord::Schema.define(version: 2021_09_22_204823) do
     t.string "destiny_name"
     t.string "destiny_url_name"
     t.integer "class_id"
+    t.string "class_name"
     t.decimal "price"
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false

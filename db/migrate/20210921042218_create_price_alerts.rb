@@ -9,6 +9,7 @@ class CreatePriceAlerts < ActiveRecord::Migration[6.1]
       t.string :destiny_name
       t.string :destiny_url_name
       t.integer :class_id
+      t.string :class_name
       t.decimal :price
       t.references :user, null: false, foreign_key: true
 

@@ -8,6 +8,7 @@ FactoryBot.define do
     destiny_name { "MyString" }
     destiny_url_name { "MyString" }
     class_id { 1 }
+    class_name { "MyString" }
     price { "9.99" }
     user
   end
