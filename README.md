@@ -42,7 +42,7 @@ Luego de descargar el repositorio debes instalar sus dependencias usando el sigu
 bundle install
 ```
 
-Antes de correr nuestro servidor es importante agregar un archivo `.env` con `JWT_SECRET='my_secret'` en su interior. Puedes cambiar `my_secret` por cualquier otra clave secreta. Esto es para que JWT genere los tokens usando esta clave secreta. Luego de hacer esto para ejecutar nuestro servidor utilizamos el comando.
+Antes de correr nuestro servidor asegúrese de tener archivo `.env` con `JWT_SECRET='my_secret'` en su interior. Puedes cambiar `my_secret` por cualquier otra clave secreta. Esto es para que JWT genere los tokens usando esta clave secreta. Luego de hacer esto para ejecutar nuestro servidor utilizamos el siguiente comando.
 
 ```
 rails server
