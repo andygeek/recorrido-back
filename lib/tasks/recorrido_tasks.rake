@@ -15,8 +15,8 @@ namespace :recorrido_tasks do
 
       body = { 
         bus_travel: {
-          departure_city_id: x.origin_id, #9333
-          destination_city_id: x.destiny_id, #9360
+          departure_city_id: 9333, #9333
+          destination_city_id: 9360, #
           departure_date: '01-01-2050' #Time.now.strftime("%d-%m-%Y)
         }
       }

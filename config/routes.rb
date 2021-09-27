@@ -14,4 +14,8 @@ Rails.application.routes.draw do
   post "/users/login" => "users#login"
 
   post "/price_alerts" => "price_alerts#create"
+
+  get "/cities" => "cities#index"
+
+  get "/min_prices/:id" => "min_prices#find_by_id"
 end
