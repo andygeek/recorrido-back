@@ -1,6 +1,6 @@
 class ExternalWebsController < ApplicationController
 
-  # POST /webs
+  # POST /external_web
   def index
     response = connection_api.get("/es/bus/#{login_params[:origin]}/#{login_params[:origin]}/#{login_params[:date]}")
     render json: response.body, status: :ok

@@ -28,7 +28,11 @@ ActiveRecord::Schema.define(version: 2021_09_22_204823) do
   create_table "price_alerts", force: :cascade do |t|
     t.string "name"
     t.integer "origin_id"
+    t.string "origin_name"
+    t.string "origin_url_name"
     t.integer "destiny_id"
+    t.string "destiny_name"
+    t.string "destiny_url_name"
     t.integer "class_id"
     t.decimal "price"
     t.integer "user_id", null: false

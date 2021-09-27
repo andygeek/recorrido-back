@@ -6,7 +6,11 @@ RSpec.describe PriceAlert, type: :model do
     it "validate precense of requirements" do
       should validate_presence_of(:name)
       should validate_presence_of(:origin_id)
+      should validate_presence_of(:origin_name)
+      should validate_presence_of(:origin_url_name)
       should validate_presence_of(:destiny_id)
+      should validate_presence_of(:destiny_name)
+      should validate_presence_of(:destiny_url_name)
       should validate_presence_of(:class_id)
       should validate_presence_of(:price)
       should validate_presence_of(:user_id)
